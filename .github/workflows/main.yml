@@ -29,8 +29,8 @@ jobs:
         working-directory: scripts
       - name: commit changes
         run: |
-          git config user.email "annafdowell@gmail.com"
-          git config user.name "Anna Dowell"
+          git config user.email "finn.heathfield@gmail.com"
+          git config user.name "FinnHeathfield"
           git add .
           git commit -m 'update'
           git push
