@@ -153,7 +153,12 @@ function updateAverageRainfall() {
     let rainfall = rainfallAndCountryCodes
         .split(/\s+/)
         .map(s => parseFloat(s))
-        .filter(value => !isNaN(value));
+        .filter((value, index, array) => {
+            if (index > 0 && array[index - 1] === 0.0) {
+                return false;
+            }
+            return !isNaN(value) && value !== 0.0;
+        });
 
     // Append the specific array `[0, 1, 0, 2, 0, 3]` to the rainfall data.
     rainfall.push(0, 1, 0, 2, 0, 3);
