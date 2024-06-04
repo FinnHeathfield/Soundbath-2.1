@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Soundbath</title>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="rnbo-version" content="1.0.0-alpha.5">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.js"></script>
+    <script type="text/javascript" src="https://cdn.cycling74.com/rnbo/latest/rnbo.min.js"></script>
+    <link rel="icon" href="/images/start_button_mask.png">
+    
+    
+    <style>
+        /* Basic CSS reset for body */
+        body { margin: 0; padding: 0; }
+        /* Full-screen map positioning */
+        #map { position: absolute; top: 0; bottom: 0; width: 100%; }
+
+        /* Initially hide info and help icons */
+        #infoIcon, #helpIcon {
+            display: none;
+        }
+
+        /* Styling for help icon */
+        #helpIcon {
+            position: absolute;
+            top: 45px;
+            right: 30px;
+            width: 40px;
+            height: 40px;
+            z-index: 100;
+            cursor: pointer;
+        }
+
+        /* Pseudo-element for help icon for visual effects */
+        #helpIcon::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 50%, #e7e56c 50%);
+            background-size: 100% 200%;
+            transition: background-position 0.5s;
+            -webkit-mask-image: url('images/question-mark-mask.png');
+            mask-image: url('images/question-mark-mask.png');
+            mask-size: cover;
+            pointer-events: none;
+        }
+
+        /* Hover effect for help icon */
+        #helpIcon:hover::after {
+            background-position: 0 -100%;
+        }
+
+        /* Styling for information icon */
+        #infoIcon {
+            position: absolute;
+            top: 100px;
+            right: 30px;
+            width: 40px;
+            height: 40px;
+            z-index: 96;
+            cursor: pointer;
+        }
+
+
+        /* Popup box styling, initially hidden */
+        #popupBox {
+            display: none;
+            position: absolute;
+            top: calc(30px + 7%);
+            right: 30px;
+            width: 225px;
+            height: auto;
+            max-height: 410px;
+            overflow-y: auto;
+            background: rgba(255, 255, 255, 1);
+            z-index: 99;
+            border: 1px solid #ccc;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            border-radius: 5px;
+        }
+ 
+        /* Paragraph styling within popup box */
+        #popupBox p {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            line-height: 1.6;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Hidden additional info area */
+        #info {
+            display: none;
+            position: absolute;
+            top: 200px;
+            left: 20px;
+            padding: 5px;
+            background: black;
+            color: black;
+            width: 16%;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            font-size: 0.8em;
+            overflow-y: auto;
+            height: 450px;
+            z-index: 97;
+        }
+
+        /* Start button styling */
+#start {
+    position: absolute;
+    top: 15%; /* Vertical positioning */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Offset to the left by half its width */
+    width: 120px;
+    height: 120px;
+    z-index: 100;
+    cursor: pointer;
+    animation: pulse 3s infinite;
+    transform-origin: center; /* Ensure transformations scale from the center */
+}
+
+/* Keyframes for start button animation ensuring transform is included */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1) translateX(-52%);
+    }
+    50% {
+        transform: scale(0.8) translateX(-48%);
+    }
+}
+
+/* Ensures media query reiterates necessary transforms for mobile */
+@media (max-width: 600px) {
+    #start {
+        top: 10%;
+        left: 48%; /* Horizontally center the button */
+        transform: translateX(-52%); /* Maintain horizontal centering */
+    }
+}
+
+
+    </style>
+
+
+</head>
+<body>
+    <div id="helpIcon">
+        <img src="images/question.svg" alt="Help" style="width:100%; height:100%;">
+    </div>
+    <div id="infoIcon">
+        <a href="about.html" target="_blank">
+            <img src="images/information.svg" alt="Info" style="width:100%; height:100%;">
+        </a>
+    </div>
+    
+    <div id="start">
+        <img src="images/start_button.svg" alt="Help" style="width:100%; height:100%;">
+    </div>
+<div id="popupBox">
+    <p>The colourful clouds represent rain gauges that are collecting rainfall right now. As you move around the map, zooming in and out, only the gauges that are visible on your screen will sing.</p> 
+    <p>Most of the measurements will be updated every 15 minutes, and the music will change.</p>
+    <p>Soundbath is rain like you've never heard it before across England, Scotland or Wales. What does your local area's custom rain song sound like? Try it out!</p> 
+    <p>WHAT DOES THE SOUND MEAN? </p>
+    <p>The music is generated in near real time in response to the data and with some randomness, so every rainsong will always be unique. </p>
+    <p>Volume and quickness: The melody gets louder and faster the more rain is falling. </p>
+    <p>Each country has its own unique voice that helps users distinguish where it is raining at a specific moment. Here’s what to expect:</p>
+    <p>England has a descending melody where each note is lower than the previous one. This repeats in time with a drum. The rhythm of the drum varies between three different rhythms depending on the amount of rain.</p>
+    <p>Scotland has four instruments playing the familiar melody of the Scottish folk tune “Skye Boat”  in harmony with the other countries’ tunes. </p>
+    <p>Wales has choral instrument randomly choosing an sustaining notes. During high rainfall periods, a rippling shimmering effect is created, sounding like the pitter-patter of drizzle.</p>
+    <p>WHAT DO THE COLOURS MEAN? </p>
+    <p>Our colour scale ranges from light purple for the lightest drizzle to a deep indigo for the heaviest downpour. In a 15-minute collection period, the average volume of rain is most often between 0 and 0.3 mm: so users will likely see varied shades of purple.  </p>
+    <p>The white area on the map highlights the UK. Unfortunately, Northern Ireland doesn't publish comparable rainfall data, so soundbath only covers Britain.</p>
+    <p>Yellow elements – like the ? button you just clicked – provide extra information to help understand our project. </p>
+</div>
+<div id="map"></div>
+<div id="info">Information content goes here</div>
+
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function () {
+        // Disable interactions except for the 'start' button initially
+        document.querySelectorAll('div, a').forEach(el => {
+            if (el.id !== 'start') {
+                el.classList.add('disable-interaction');
+            }
+        });
+    
+        // Function to enable interactions and show icons
+        function enableAllInteractionsAndShowIcons() {
+            document.querySelectorAll('.disable-interaction').forEach(el => {
+                el.classList.remove('disable-interaction');
+            });
+            document.getElementById('infoIcon').style.display = 'block';
+            document.getElementById('helpIcon').style.display = 'block';
+        }
+    
+        // Enable interactions and show icons on 'start' button click
+        document.getElementById('start').addEventListener('click', function() {
+            enableAllInteractionsAndShowIcons();
+        });
+    });
+    
+    document.getElementById('helpIcon').addEventListener('click', function(event) {
+        var popupBox = document.getElementById('popupBox');
+        popupBox.style.display = (popupBox.style.display === 'block' ? 'none' : 'block');
+        event.stopPropagation();
+    });
+    
+    document.getElementById('popupBox').addEventListener('click', function(event) {
+        event.stopPropagation();
+    });
+    
+    document.addEventListener('click', function() {
+        var popupBox = document.getElementById('popupBox');
+        popupBox.style.display = 'none';
+    });
+</script>
+
+<script type="text/javascript" src="script.js"></script>
+<script type="text...
+</html>
