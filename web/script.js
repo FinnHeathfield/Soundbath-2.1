@@ -70,7 +70,7 @@ async function main() {
         //outputNode.gain.setValueAtTime(0, context.currentTime);
 
         // THIS IS THE RAW LINK TO THE PATCH
-        const patcherUrl = "export/patch.export.json";
+        const patcherUrl = "Soundbath-local-port/export/patch.export.json";
         const patcherResponse = await fetch(patcherUrl);
 
         if (!patcherResponse.ok) {
