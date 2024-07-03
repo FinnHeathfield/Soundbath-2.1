@@ -25,3 +25,7 @@ You then need to give the buffer object within RNBO the location the wav is stor
 Replace "@file /Users/finnheathfield/Desktop/Tech/Year_2/Term_2/Rain_Sonification/Foley/walesfoley.wav" with "@file /filepathhere/walesfoley.wav"
 The buffer is located by entering sub patches as follows:
 FullRebuild (RNBO Patch) -> p Rainfall Effect -> p @title RainEffects @polyphony 64 ... -> buffer~ @name Foley1
+
+## Lisence
+This work is licensed under Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International
+
