@@ -186,10 +186,18 @@ let averagedRainfall = Object.keys(groupData).map(groupCode => {
 // Flatten the array of arrays into a single array
 averagedRainfall = averagedRainfall.flat();
 
-// Append 0, 1, 0, 2, 0, 3 to the flattened array
-averagedRainfall.push(0, 1, 0, 2, 0, 3);
+// Append 0, 1, 0, 2, 0, 3 to the flattened array if the group code doesn't exist
+let groupCodesToAdd = [1, 2, 3]; // The group codes you want to check and append
+
+groupCodesToAdd.forEach(code => {
+    // Check if the group code is already present in the original rainfallData array
+    if (!rainfallData.includes(code)) {
+        averagedRainfall.push(0, code); // Append the [0, groupCode] pair if it's not present
+    }
+});
 
 console.log(averagedRainfall);
+
 
 
 
