@@ -187,8 +187,7 @@ let finalResult = [averagedRainfall]
 console.log(finalResult);
 
 
-    // Append the specific array `[0, 1, 0, 2, 0, 3]` to the rainfall data.
-    finalResult.push(0, 1, 0, 2, 0, 3);
+
 
    
 
