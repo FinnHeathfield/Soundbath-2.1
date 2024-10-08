@@ -183,19 +183,20 @@ let averagedRainfall = Object.keys(groupData).map(groupCode => {
     return [average, parseFloat(groupCode)];
 });
 
-console.log(averagedRainfall);
+let finalResult = [averagedRainfall]
+console.log(finalResult);
 
 
     // Append the specific array `[0, 1, 0, 2, 0, 3]` to the rainfall data.
-    rainfall.push(0, 1, 0, 2, 0, 3);
+    finalResult.push(0, 1, 0, 2, 0, 3);
 
    
 
         // Send the message event to the RNBO device.
-    let messageEvent = new RNBO.MessageEvent(RNBO.TimeNow, "Data", rainfall);
+    let messageEvent = new RNBO.MessageEvent(RNBO.TimeNow, "Data", finalResult);
      device.scheduleEvent(messageEvent);
 
-    console.log("Data sent to RNBO:", rainfall);
+    console.log("Data sent to RNBO:", finalResult);
     
     // Log only the data that is currently being visualized.
     console.log("Currently visualized data:", visibleFeatures);
