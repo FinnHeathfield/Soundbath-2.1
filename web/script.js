@@ -149,18 +149,42 @@ function updateAverageRainfall() {
 
     let averageRainfall = (visibleFeatures.length > 0) ? (totalRainfall / visibleFeatures.length).toFixed(2) : 'N/A';
 
-let rainfall = rainfallAndCountryCodes
+let rainfallData = rainfallAndCountryCodes
     .split(/\s+/)
     .map(s => parseFloat(s))
-    .filter((value, index) => !isNaN(value) && value !== 0.0);
+    .filter((value, index, array) => {
+        if (index > 0 && array[index - 1] === 0.0) {
+            return false;
+        }
+        return !isNaN(value) && value !== 0.0;
+    });
 
-// Now iterate through in pairs of 2 and remove pairs where the first value is 0
-let filteredRainfall = [];
-for (let i = 0; i < rainfall.length; i += 2) {
-    if (rainfall[i] !== 0) {
-        filteredRainfall.push(rainfall[i], rainfall[i + 1]);
+// Create an object to store the sums and counts for each group code
+let groupData = {};
+
+// Process the array in pairs (data, groupCode)
+for (let i = 0; i < rainfallData.length; i += 2) {
+    let dataValue = rainfallData[i];
+    let groupCode = rainfallData[i + 1];
+
+    // If the group code doesn't exist in the object, initialize it
+    if (!groupData[groupCode]) {
+        groupData[groupCode] = { sum: 0, count: 0 };
     }
+
+    // Add the data value to the sum and increment the count for this group code
+    groupData[groupCode].sum += dataValue;
+    groupData[groupCode].count += 1;
 }
+
+// Create an array to store the averaged data and group code pairs
+let averagedRainfall = Object.keys(groupData).map(groupCode => {
+    let average = groupData[groupCode].sum / groupData[groupCode].count;
+    return [average, parseFloat(groupCode)];
+});
+
+console.log(averagedRainfall);
+
 
     // Append the specific array `[0, 1, 0, 2, 0, 3]` to the rainfall data.
     rainfall.push(0, 1, 0, 2, 0, 3);
