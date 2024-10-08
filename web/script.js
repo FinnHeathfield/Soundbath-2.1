@@ -183,8 +183,14 @@ let averagedRainfall = Object.keys(groupData).map(groupCode => {
     return [average, parseFloat(groupCode)];
 });
 
-let finalResult = [averagedRainfall]
-console.log(finalResult);
+// Flatten the array of arrays into a single array
+averagedRainfall = averagedRainfall.flat();
+
+// Append 0, 1, 0, 2, 0, 3 to the flattened array
+averagedRainfall.push(0, 1, 0, 2, 0, 3);
+
+console.log(averagedRainfall);
+
 
 
 
