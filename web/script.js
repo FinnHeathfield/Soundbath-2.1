@@ -198,10 +198,10 @@ console.log(averagedRainfall);
    
 
         // Send the message event to the RNBO device.
-    let messageEvent = new RNBO.MessageEvent(RNBO.TimeNow, "Data", finalResult);
+    let messageEvent = new RNBO.MessageEvent(RNBO.TimeNow, "Data", averagedRainfall);
      device.scheduleEvent(messageEvent);
 
-    console.log("Data sent to RNBO:", finalResult);
+    console.log("Data sent to RNBO:", averagedRainfall);
     
     // Log only the data that is currently being visualized.
     console.log("Currently visualized data:", visibleFeatures);
