@@ -1272,7 +1272,7 @@ E71440,0.0,51.277138,-1.712499,England,Wiltshire,0.07,0.04,1
 15172,0.15,56.32054504,-4.328975608,Scotland,Stirling,0.08,0,2
 361047,0.05,56.36918493,-3.92115763,Scotland,Perth and Kinross,0.08,0,2
 511327,0.0,57.12504883,-2.851450464,Scotland,Aberdeenshire,0.08,0.02,2
-14999,0.05,55.34222734,-2.936481216,Scotland,Scottish Borders,0.08,0,2
+14999,0.0,55.34222734,-2.936481216,Scotland,Scottish Borders,0.08,0,2
 115244,0.0,57.20200168,-3.249607166,Scotland,Aberdeenshire,0.08,0.02,2
 15158,0.0,56.148819,-3.7458095,Scotland,Clackmannanshire,0.08,0,2
 115654,0.15,56.62026156,-6.080645248,Scotland,Argyll and Bute,0.08,0.15,2
@@ -1319,7 +1319,7 @@ E71440,0.0,51.277138,-1.712499,England,Wiltshire,0.07,0.04,1
 1024,4.2,53.067313,-4.0113282,Wales,Gwynedd,0.41,0.37,3
 1025,3.0,52.954232,-4.4423451,Wales,Gwynedd,0.41,0.37,3
 1026,2.0,53.339472,-4.4409252,Wales,Isle of Anglesey,0.41,0.2,3
-1027,2.6,53.268208,-4.3332764,Wales,Isle of Anglesey,0.41,0.2,3
+1027,3.4,53.268208,-4.3332764,Wales,Isle of Anglesey,0.41,0.2,3
 1028,3.0,53.264115,-4.6131789,Wales,Isle of Anglesey,0.41,0.2,3
 1029,3.0,52.679265,-3.8125868,Wales,Gwynedd,0.41,0.37,3
 1030,2.4,52.740274,-3.6463927,Wales,Gwynedd,0.41,0.37,3
@@ -1337,8 +1337,8 @@ E71440,0.0,51.277138,-1.712499,England,Wiltshire,0.07,0.04,1
 1042,3.0,51.793003,-3.4337095,Wales,Rhondda Cynon Taf,0.41,0.4,3
 1043,3.4,51.679039,-3.4881214,Wales,Rhondda Cynon Taf,0.41,0.4,3
 1044,3.2,51.657853,-3.3975177,Wales,Rhondda Cynon Taf,0.41,0.4,3
-1045,2.4,51.797889,-3.3662566,Wales,Merthyr Tydfil County Borough,0.41,0.5,3
-1046,3.2,51.48559,-3.2672733,Wales,Cardiff,0.41,0,3
+1045,3.6,51.797889,-3.3662566,Wales,Merthyr Tydfil County Borough,0.41,0.5,3
+1046,2.8,51.48559,-3.2672733,Wales,Cardiff,0.41,0,3
 1047,2.2,51.684092,-3.2987023,Wales,Merthyr Tydfil County Borough,0.41,0.5,3
 1048,4.6,51.681388,-3.5444086,Wales,Rhondda Cynon Taf,0.41,0.4,3
 1049,0.8,51.939018,-3.4015996,Wales,Powys,0.41,0.29,3
@@ -1387,7 +1387,7 @@ E71440,0.0,51.277138,-1.712499,England,Wiltshire,0.07,0.04,1
 1092,5.0,51.635761,-3.5252862,Wales,Bridgend County Borough,0.41,0.13,3
 1093,4.6,51.504862,-3.5398578,Wales,Bridgend County Borough,0.41,0.13,3
 1094,6.0,51.644625,-3.6452708,Wales,Neath Port Talbot,0.41,0.52,3
-1095,5.8,51.581417,-3.6196189,Wales,Bridgend County Borough,0.41,0.13,3
+1095,5.4,51.581417,-3.6196189,Wales,Bridgend County Borough,0.41,0.13,3
 1096,2.2,51.760836,-5.0170933,Wales,Pembrokeshire,0.41,0.57,3
 1097,2.6,51.851752,-4.8887233,Wales,Pembrokeshire,0.41,0.57,3
 1098,1.4,51.949257,-4.591997,Wales,Pembrokeshire,0.41,0.57,3
