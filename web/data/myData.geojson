@@ -14949,7 +14949,7 @@
                 ]
             },
             "properties": {
-                "rainfall": "0.75",
+                "rainfall": "0.125",
                 "country_code": 2
             }
         },
